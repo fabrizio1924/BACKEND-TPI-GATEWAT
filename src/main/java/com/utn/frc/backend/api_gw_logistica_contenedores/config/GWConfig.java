@@ -9,14 +9,15 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class GWConfig
 {
+    @Bean
     public RouteLocator configurarRutas(RouteLocatorBuilder builder,
                                         @Value("${apunte-api-gw-tpi.url-microservicio-solicitudes}")
                                         String uriSoicitudes,
                                         @Value("${apunte-api-gw-tpi.url-microservicio-rutas}")
                                         String uriRutas) {
         return builder.routes()
-                .route(p -> p.path("/api/solicitudes-app/**").uri(uriSoicitudes))
-                .route(p -> p.path("/api/rutas-app/**").uri(uriSoicitudes))
+                .route(p -> p.path("/solicitudes-app/**").uri(uriSoicitudes))
+                .route(p -> p.path("/rutas-app/**").uri(uriRutas))
                 .build();
     }
 }
